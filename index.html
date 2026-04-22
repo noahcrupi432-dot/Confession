@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Confession</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            background: linear-gradient(to right, #FFB6C1, #CBC3E3);
+            text-align: center;
+            color: #333;
+        }
+        header {
+            padding: 30px;
+            font-size: 30px;
+            font-weight: bold;
+        }
+        main {
+            padding: 30px;
+        }
+        button {
+            padding: 12px 20px;
+            font-size: 18px;
+            cursor: pointer;
+            border: none;
+            border-radius: 8px;
+            margin: 10px;
+        }
+        .yes {
+            background-color: #4CAF50;
+            color: Grey;
+        }
+        .no {
+            background-color: #ff4b5c;
+            color: Grey;
+        }
+        #messageBox {
+            display: none;
+            margin-top: 30px;
+            padding: 20px;
+            background: White;
+            border-radius: 12px;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+        img {
+            width: 100%;
+            max-width: 300px;
+            border-radius: 12px;
+            margin: 15px 0;
+        }
+        #response {
+            margin-top: 20px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+		
+		#messageBox p {
+			line-height: 1.6;
+		}
+    </style>
+</head>
+<body>
+
+<header>
+    Confession 💌
+</header>
+
+<main>
+    <p>Hey Lillie, I made something for you...</p>
+    <button onclick="showMessage()">Click here</button>
+
+    <div id="messageBox">
+        <h2>I love you, will you be my girlfriend?</h2>
+
+        <!-- Photo -->
+        <img src="photo.jpg" alt="Us">
+
+        <!-- Personal Message -->
+        <p style="white-space: pre-line;">
+There’s something about you that always pulls me back in,
+in a way I can’t really explain.
+
+Maybe it’s how you fit so perfectly when you hug me,
+your arms resting over my shoulders like that’s where they’re meant to be.
+Or the way your blonde hair catches the light,
+like it was made to stand out without even trying.
+
+And your eyes…
+they remind me of the ocean—
+calm, deep, and somehow the only place where everything feels quiet for a moment.
+
+I don’t know how you do it,
+but being around you just feels right.
+And no matter what happens,
+I always find myself coming back to you.
+</p>
+
+        <!-- Buttons -->
+        <div id="buttons">
+            <button class="yes" onclick="answerYes()">Yes ❤️</button>
+            <button class="no" onclick="answerNo()">No 💔</button>
+        </div>
+
+        <!-- Response -->
+        <p id="response"></p>
+    </div>
+
+    <!-- Music (Spotify) -->
+<button onclick="playSpotify()">Play Song 🎵</button>
+
+<iframe id="spotify"
+        style="display:none; margin-top:15px;"
+        src=""
+        width="300"
+        height="80"
+        frameborder="0"
+        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture">
+</iframe>
+</iframe>
+
+</main>
+
+<script>
+    function showMessage() {
+        document.getElementById("messageBox").style.display = "block";
+    }
+
+   function sendAnswer(answer) {
+    fetch("https://formspree.io/f/xeevlvvl", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            answer: answer
+        })
+    })
+    .then(response => {
+        if (response.ok) {
+            console.log("Message sent");
+        } else {
+            console.log("Error sending");
+        }
+    })
+    .catch(error => console.log(error));
+}
+
+function answerYes() {
+    document.getElementById("response").innerHTML =
+        "You just made me the happiest person ❤️";
+
+    // Trigger Spotify
+    playSpotify();
+
+    // Send to Formspree
+    sendAnswer("Yes");
+}
+
+function answerNo() {
+    document.getElementById("response").innerHTML =
+        "That’s okay, I just wanted to be honest about how I feel. I still think you’re really amazing, and ill always be here for you. 😊";
+
+    // Send to Formspree
+    sendAnswer("No");
+}
+	
+	function playSpotify() {
+    const frame = document.getElementById("spotify");
+    
+    // Replace SONG_ID with your real Spotify track ID
+    const songID = "7BqBn9nzAq8spo5e7cZ0dJ";
+
+    frame.src = `https://open.spotify.com/embed/track/${songID}?autoplay=1`;
+    frame.style.display = "block";
+}
+</script>
+
+</body>
+</html>
