@@ -53,6 +53,22 @@
             border-radius: 12px;
             margin: 15px 0;
         }
+
+		.side-img {
+    position: fixed;
+    width: 120px;
+    border-radius: 10px;
+    opacity: 0.85;
+}
+
+/* Left side */
+.left1 { top: 10%; left: 10px; }
+.left2 { bottom: 10%; left: 10px; }
+
+/* Right side */
+.right1 { top: 10%; right: 10px; }
+.right2 { bottom: 10%; right: 10px; }
+		
         #response {
             margin-top: 20px;
             font-size: 18px;
@@ -113,6 +129,11 @@ So all i ask is, Will you be my Girlfriend?
         <p id="response"></p>
     </div>
 
+	<img src="photo1.jpg" class="side-img left1">
+<img src="photo2.jpg" class="side-img left2">
+<img src="photo3.jpg" class="side-img right1">
+<img src="photo4.jpg" class="side-img right2">
+	
     <!-- Music (Spotify) -->
 <button onclick="playSpotify()">Play Song 🎵</button>
 
