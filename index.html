@@ -79,6 +79,48 @@
 		#messageBox p {
 			line-height: 1.6;
 		}
+		/* MOBILE OPTIMIZATION */
+@media (max-width: 768px) {
+
+    body {
+        padding: 10px;
+    }
+
+    header {
+        font-size: 24px;
+        padding: 20px 10px;
+    }
+
+    main {
+        padding: 15px;
+    }
+
+    #messageBox {
+        max-width: 100%;
+        padding: 15px;
+        border-radius: 10px;
+    }
+
+    #messageBox p {
+        font-size: 15px;
+        line-height: 1.6;
+        text-align: left;
+    }
+
+    button {
+        width: 100%;
+        font-size: 16px;
+    }
+
+    /* Hide side images on mobile */
+    .side-img {
+        display: none;
+    }
+
+    img {
+        max-width: 90%;
+    }
+}
     </style>
 </head>
 <body>
