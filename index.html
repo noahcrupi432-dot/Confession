@@ -54,20 +54,31 @@
             margin: 15px 0;
         }
 
-		.side-img {
+		/* Container for left + right sides */
+.side-container {
     position: fixed;
-    width: 180px; /* 120 × 1.5 = 180 */
+    top: 0;
+    height: 100%;
+    width: 200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    pointer-events: none; /* so they don’t block clicks */
+}
+
+.left-side {
+    left: 10px;
+}
+
+.right-side {
+    right: 10px;
+}
+
+.side-img {
+    width: 180px;
     border-radius: 10px;
     opacity: 0.85;
 }
-
-/* Left side */
-.left1 { top: 8%; left: 10px; }
-.left2 { top: 5%; left: 10px; }
-
-/* Right side */
-.right1 { top: 8%; right: 10px; }
-.right2 { top: 5%; right: 10px; }
 		
         #response {
             margin-top: 20px;
@@ -171,10 +182,15 @@ So all i ask is, Will you be my Girlfriend?
         <p id="response"></p>
     </div>
 
-<img src="Lillie-2.jpg" class="side-img left1">
-<img src="Lillie-4.jpg" class="side-img left2">
-<img src="Lillie-1.jpg" class="side-img right1">
-<img src="Lillie-3.jpg" class="side-img right2">
+<div class="side-container left-side">
+    <img src="Lillie-2.jpg" class="side-img">
+    <img src="Lillie-4.jpg" class="side-img">
+</div>
+
+<div class="side-container right-side">
+    <img src="Lillie-1.jpg" class="side-img">
+    <img src="Lillie-3.jpg" class="side-img">
+</div>
 	
     <!-- Music (Spotify) -->
 <button onclick="playSpotify()">Play Song 🎵</button>
